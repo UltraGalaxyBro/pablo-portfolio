@@ -65,7 +65,7 @@ export default function PortfolioProjectCard({ project }) {
 
                     {project.date && (
                         <div className="mt-6 flex items-center gap-4 text-gray-400">
-                            <span className="text-sm">{project.date}</span>
+                            <span className="text-sm">{new Date(project.date).toLocaleDateString('pt-BR')}</span>
                         </div>
                     )}
                 </div>

@@ -16,11 +16,6 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-/*SÓ PARA SERVIDORES COMPARTILHADOS*/
-Route::get('/symlink', function () {
-    Artisan::call('storage:link');
-});
-
 Route::get('/projeto/{id}', function ($id) {
     $project = Project::with('tools', 'projectImages')->findOrFail($id);
     return Inertia::render('ProjectDetail', ['project' => $project]);
