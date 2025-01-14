@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ToolController;
 use App\Models\Project;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,11 @@ Route::get('/', function () {
         'projects' => $projects
     ]);
 })->name('welcome');
+
+/*SÓ PARA SERVIDORES COMPARTILHADOS*/
+Route::get('/symlink', function () {
+    Artisan::call('storage:link');
+});
 
 Route::get('/projeto/{id}', function ($id) {
     $project = Project::with('tools', 'projectImages')->findOrFail($id);
